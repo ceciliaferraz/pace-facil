@@ -38,9 +38,19 @@
     </div>
 
     <div style="text-align: center; margin-top: 15px; color: #64748b; font-size: 0.75rem;">
-        👀 <img src="https://api.counterapi.dev/v1/ceciliaferraz/pace-facil/count" alt="Contador" style="vertical-align: middle; height: 14px; opacity: 0.7;" /> acessos
+        👀 Acessos: <span id="contador-visitas">carregando...</span>
     </div>
 
     <script src="script.js"></script>
+    <script>
+        fetch('https://api.counterapi.dev/v1/ceciliaferraz/pace-facil/up')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('contador-visitas').innerText = data.count;
+            })
+            .catch(error => {
+                document.getElementById('contador-visitas').innerText = "1";
+            });
+    </script>
 </body>
 </html>
